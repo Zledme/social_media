@@ -42,7 +42,7 @@ app.post('/api/authenticate',async (req, res) =>{
     }
 
 
-    const Token = jwt.sign(JSON.stringify(user) , process.env.ACCESS_TOKEN_SECRET);
+    const Token = jwt.sign(JSON.stringify(user) , ""+process.env.ACCESS_TOKEN_SECRET);
     res.json({ Token: Token });
 
 });
