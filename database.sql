@@ -1,4 +1,4 @@
-CREATE DATABASE socialmedia;
+--CREATE DATABASE socialmedia;
 
 
 CREATE TABLE users(
@@ -40,5 +40,5 @@ CREATE TABLE comments(
 );
 
 
-INSERT INTO users (email, pass, user_name,followers, following) VALUES ('helloauth@gmail.com', 'heyauth',"user1", 0, 0);
-INSERT INTO users (email, pass, user_name,followers, following) VALUES ('helloauthe@gmail.com', 'heyauthe',"user2" ,0, 0);
+INSERT INTO users (email, pass, user_name,followers, following) VALUES ('helloauth@gmail.com', 'heyauth','user1', 0, 0);
+INSERT INTO users (email, pass, user_name,followers, following) VALUES ('helloauthe@gmail.com', 'heyauthe','user2' ,0, 0);
