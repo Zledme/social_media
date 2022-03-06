@@ -36,7 +36,7 @@ app.post('/api/authenticate',async (req, res) =>{
     const user = await pool.query("SELECT * FROM users WHERE email = $1",
     [email]
     );
-    
+    res.send("hello")
 
     if (user.rows.length === 0 || pass != user.rows[0].pass) {
          return res.status(401).json("Password or Email is incorrect");
