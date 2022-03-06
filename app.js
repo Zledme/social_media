@@ -155,7 +155,7 @@ app.get('/api/all_posts',authenticateToken,async (req,res)=>{
     res.send(posts.rows[0]);
 })
 
-app.get("*", (res,res) => {
+app.get("*", (req,res) => {
     res.status(400);
 })
 
