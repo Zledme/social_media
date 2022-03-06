@@ -162,5 +162,5 @@ app.get("*", (req,res) => {
 })
 
 app.listen(PORT, () => {
-    console.log("server is starting on port");
+    console.log("server is starting on po");
 });
