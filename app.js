@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const cors = require('cors')
 
 const pool = require('./db')
-
+const PORT = process.env.PORT || 5000;
 
 
 const app = express();
@@ -155,7 +155,10 @@ app.get('/api/all_posts',authenticateToken,async (req,res)=>{
     res.send(posts.rows[0]);
 })
 
+app.get("*", (res,res) => {
+    res.status(400);
+})
 
-app.listen(5000, () => {
-    console.log("server is starting on port 5000");
+app.listen(PORT, () => {
+    console.log("server is starting on port");
 });
