@@ -33,9 +33,11 @@ function authenticateToken(req,res,next){
 //perform user authentication and return a JWT token.
 app.post('/api/authenticate',async (req, res) =>{
     const {email, pass} = req.body;
+    console.log("hello")
     const user = await pool.query("SELECT * FROM users WHERE email = $1",
     [email]
     );
+    console.log("its here")
     res.send("hello")
 
     if (user.rows.length === 0 || pass != user.rows[0].pass) {
