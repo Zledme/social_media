@@ -1,13 +1,14 @@
 {
   "name": "internpro",
   "version": "1.0.0",
-  "description": "",
+  "description": "nothing",
   "main": "app.js",
   "engines":{
     "node": "16.14.0",
     "npm": "8.3.1"
   },
   "scripts": {
+    "dev": "nodemon app.js",
     "start": "node app.js",
     "heroku-postbuild": "npm install && npm run build"
   },

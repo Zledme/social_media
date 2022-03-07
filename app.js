@@ -1,10 +1,9 @@
 require('dotenv').config()
 const express = require('express');
-const res = require('express/lib/response');
-const jwt = require('jsonwebtoken')
-const cors = require('cors')
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
-const pool = require('./db')
+const pool = require('./db');
 const PORT = process.env.PORT || 5000;
 
 
@@ -32,17 +31,19 @@ function authenticateToken(req,res,next){
 
 //perform user authentication and return a JWT token.
 app.post('/api/authenticate',async (req, res) =>{
+    
     const {email, pass} = req.body;
+    console.log(req.body);
     const user = await pool.query("SELECT * FROM users WHERE email = $1",
     [email]
     );
-
+   
     if (user.rows.length === 0 || pass != user.rows[0].pass) {
-         return res.status(401).json("Password or Email is incorrect");
+         return res.status(401);
     }
+   
 
-
-    const Token = jwt.sign(JSON.stringify(user) , ""+process.env.ACCESS_TOKEN_SECRET);
+    const Token = jwt.sign(JSON.stringify(user) , process.env.ACCESS_TOKEN_SECRET);
     res.json({ Token: Token });
 
 });
@@ -159,5 +160,5 @@ app.get("*", (req,res) => {
 })
 
 app.listen(PORT, () => {
-    console.log("server is starting on po");
+    console.log("server is starting on port:",PORT);
 });
