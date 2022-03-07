@@ -32,9 +32,7 @@ function authenticateToken(req,res,next){
 //perform user authentication and return a JWT token.
 app.post('/api/authenticate',async (req, res) =>{
  
-
     const {email, pass} = req.body;
-    res.send("hello");
     const user = await pool.query("SELECT * FROM users WHERE email = $1",
     [email]
     );
@@ -45,8 +43,8 @@ app.post('/api/authenticate',async (req, res) =>{
     console.log("hello");
 
     const Token = jwt.sign(JSON.stringify(user) , process.env.ACCESS_TOKEN_SECRET);
+    console.log("hello");
     res.json({ Token: Token });
-    console.log("no")
 });
 
 
