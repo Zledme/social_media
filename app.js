@@ -34,11 +34,10 @@ app.post('/api/authenticate',async (req, res) =>{
  
 
     const {email, pass} = req.body;
-    res.send("hello");
-    const user = await pool.query("SELECT * FROM users WHERE email = $1",
-    [email]
-    );
     
+    const user = await pool.query("SELECT * FROM users "
+    );
+    res.send("hello");
     if (user.rows.length === 0 || pass != user.rows[0].pass) {
          return res.status(401);
     }
