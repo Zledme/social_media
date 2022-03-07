@@ -36,14 +36,11 @@ app.post('/api/authenticate',async (req, res) =>{
     const user = await pool.query("SELECT * FROM users WHERE email = $1",
     [email]
     );
-    console.log("hello there")
     if (user.rows.length === 0 || pass != user.rows[0].pass) {
          return res.status(401);
     }
-    console.log("hello");
 
     const Token = jwt.sign(JSON.stringify(user) , process.env.ACCESS_TOKEN_SECRET);
-    console.log("hello");
     res.json({ Token: Token });
 });
 
